@@ -150,6 +150,7 @@ const divideBtn = document.getElementById('divide');
 
 const equalBtn = document.getElementById('equals');
 const clearBtn = document.getElementById('clear');
+const backspaceBtn = document.getElementById('backspace');
 
 sumBtn.addEventListener('click', () => {
     if (isChain) {
@@ -229,4 +230,13 @@ clearBtn.addEventListener('click', () => {
     isClear = false;
     isChain = false;
     isPoint = false;
+});
+
+backspaceBtn.addEventListener('click', () => {
+    if (display.innerText.length !== 1) {
+        display.innerText = display.innerText.slice(0, -1);
+    } else {
+        display.innerText = 0;
+        isClear = false;
+    }
 });
