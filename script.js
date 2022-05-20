@@ -32,7 +32,8 @@ function operate(operator, a, b) {
     }
 }
 
-let firstValue = 0, secondValue = 0, operator = '', isClear = false, isChain = false;
+let firstValue = 0, secondValue = 0, operator = '';
+let isClear = false, isChain = false, isPoint = false;
 
 const display = document.getElementById('display');
 let displayValue = 0;
@@ -47,6 +48,7 @@ const seven = document.getElementById('seven');
 const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
 const zero = document.getElementById('zero');
+const point = document.getElementById('point');
 
 one.addEventListener('click', () => {
     if (!isClear) {
@@ -126,6 +128,18 @@ zero.addEventListener('click', () => {
         isClear = true;
     } else {
         display.innerText += 0;
+    }
+});
+point.addEventListener('click', () => {
+    if (!isPoint) {
+        if (!isClear) {
+            display.innerText = '0.';
+            isClear = true;
+            isPoint = true;
+        } else {
+            display.innerText += '.';
+            isPoint = true;
+        }
     }
 });
 
@@ -214,4 +228,5 @@ clearBtn.addEventListener('click', () => {
     operator = '';
     isClear = false;
     isChain = false;
+    isPoint = false;
 });
