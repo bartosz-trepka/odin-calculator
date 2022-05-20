@@ -142,7 +142,7 @@ sumBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue.toFixed(6);
+        display.innerText = displayValue;
     } else {
         isChain = true;
     }
@@ -157,7 +157,7 @@ subtractBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue.toFixed(6);
+        display.innerText = displayValue;
     } else {
         isChain = true;
     }
@@ -172,7 +172,7 @@ multiplyBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue.toFixed(6);
+        display.innerText = displayValue;
     } else {
         isChain = true;
     }
@@ -187,11 +187,8 @@ divideBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        if (displayValue !== 'ERROR') {
-            display.innerText = displayValue.toFixed(6);
-        } else {
-            display.innerText = displayValue;
-        }
+        display.innerText = displayValue;
+
     } else {
         isChain = true;
     }
@@ -205,15 +202,14 @@ equalBtn.addEventListener('click', () => {
     displayValue = display.innerText;
     secondValue = +displayValue;
     displayValue = operate(operator, firstValue, secondValue);
-    if (displayValue !== 'ERROR') {
-        display.innerText = displayValue.toFixed(6);
-    } else {
-        display.innerText = displayValue;
-    }
+    display.innerText = displayValue;
 }); 
 
 clearBtn.addEventListener('click', () => {
     display.innerText = 0;
+    firstValue = 0;
+    secondValue = 0;
+    operator = '';
     isClear = false;
     isChain = false;
 });
