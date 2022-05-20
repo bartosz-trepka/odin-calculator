@@ -187,7 +187,11 @@ divideBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue.toFixed(6);
+        if (displayValue !== 'ERROR') {
+            display.innerText = displayValue.toFixed(6);
+        } else {
+            display.innerText = displayValue;
+        }
     } else {
         isChain = true;
     }
@@ -201,8 +205,12 @@ equalBtn.addEventListener('click', () => {
     displayValue = display.innerText;
     secondValue = +displayValue;
     displayValue = operate(operator, firstValue, secondValue);
-    display.innerText = displayValue.toFixed(6);
-});
+    if (displayValue !== 'ERROR') {
+        display.innerText = displayValue.toFixed(6);
+    } else {
+        display.innerText = displayValue;
+    }
+}); 
 
 clearBtn.addEventListener('click', () => {
     display.innerText = 0;
