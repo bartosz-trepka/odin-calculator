@@ -199,10 +199,12 @@ divideBtn.addEventListener('click', () => {
 });
 
 equalBtn.addEventListener('click', () => {
-    displayValue = display.innerText;
-    secondValue = +displayValue;
-    displayValue = operate(operator, firstValue, secondValue);
-    display.innerText = displayValue;
+    if (operator !== "") {
+        displayValue = display.innerText;
+        secondValue = +displayValue;
+        displayValue = operate(operator, firstValue, secondValue);
+        display.innerText = displayValue;
+    }
 }); 
 
 clearBtn.addEventListener('click', () => {
