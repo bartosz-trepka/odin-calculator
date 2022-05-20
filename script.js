@@ -32,7 +32,7 @@ function operate(operator, a, b) {
     }
 }
 
-let firstValue = 0, secondValue = 0, operator = '', isClear = false;
+let firstValue = 0, secondValue = 0, operator = '', isClear = false, isChain = false;
 
 const display = document.getElementById('display');
 let displayValue = 0;
@@ -138,6 +138,14 @@ const equalBtn = document.getElementById('equals');
 const clearBtn = document.getElementById('clear');
 
 sumBtn.addEventListener('click', () => {
+    if (isChain) {
+        displayValue = display.innerText;
+        secondValue = +displayValue;
+        displayValue = operate(operator, firstValue, secondValue);
+        display.innerText = displayValue;
+    } else {
+        isChain = true;
+    }
     displayValue = display.innerText;
     firstValue = +displayValue;
     operator = '+';
@@ -145,6 +153,14 @@ sumBtn.addEventListener('click', () => {
 });
 
 subtractBtn.addEventListener('click', () => {
+    if (isChain) {
+        displayValue = display.innerText;
+        secondValue = +displayValue;
+        displayValue = operate(operator, firstValue, secondValue);
+        display.innerText = displayValue;
+    } else {
+        isChain = true;
+    }
     displayValue = display.innerText;
     firstValue = +displayValue;
     operator = '-';
@@ -152,6 +168,14 @@ subtractBtn.addEventListener('click', () => {
 });
 
 multiplyBtn.addEventListener('click', () => {
+    if (isChain) {
+        displayValue = display.innerText;
+        secondValue = +displayValue;
+        displayValue = operate(operator, firstValue, secondValue);
+        display.innerText = displayValue;
+    } else {
+        isChain = true;
+    }
     displayValue = display.innerText;
     firstValue = +displayValue;
     operator = '*';
@@ -159,6 +183,14 @@ multiplyBtn.addEventListener('click', () => {
 });
 
 divideBtn.addEventListener('click', () => {
+    if (isChain) {
+        displayValue = display.innerText;
+        secondValue = +displayValue;
+        displayValue = operate(operator, firstValue, secondValue);
+        display.innerText = displayValue;
+    } else {
+        isChain = true;
+    }
     displayValue = display.innerText;
     firstValue = +displayValue;
     operator = '/';
@@ -175,4 +207,5 @@ equalBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
     display.innerText = 0;
     isClear = false;
+    isChain = false;
 });
