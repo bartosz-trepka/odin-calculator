@@ -142,7 +142,7 @@ sumBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue;
+        display.innerText = displayValue.toFixed(6);
     } else {
         isChain = true;
     }
@@ -157,7 +157,7 @@ subtractBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue;
+        display.innerText = displayValue.toFixed(6);
     } else {
         isChain = true;
     }
@@ -172,7 +172,7 @@ multiplyBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue;
+        display.innerText = displayValue.toFixed(6);
     } else {
         isChain = true;
     }
@@ -187,7 +187,7 @@ divideBtn.addEventListener('click', () => {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
-        display.innerText = displayValue;
+        display.innerText = displayValue.toFixed(6);
     } else {
         isChain = true;
     }
@@ -201,7 +201,7 @@ equalBtn.addEventListener('click', () => {
     displayValue = display.innerText;
     secondValue = +displayValue;
     displayValue = operate(operator, firstValue, secondValue);
-    display.innerText = displayValue;
+    display.innerText = displayValue.toFixed(6);
 });
 
 clearBtn.addEventListener('click', () => {
