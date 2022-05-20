@@ -11,7 +11,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return b !== 0 ? a / b : 'ERROR';
+    if (b!== 0) {
+        return a / b;
+    } else {
+        isClear = false;
+        return 'ERROR';
+    }
 }
 
 function operate(operator, a, b) {
@@ -26,6 +31,8 @@ function operate(operator, a, b) {
             return divide(a, b);
     }
 }
+
+let firstValue = 0, secondValue = 0, operator = '', isClear = false;
 
 const display = document.getElementById('display');
 let displayValue = 0;
@@ -42,32 +49,130 @@ const nine = document.getElementById('nine');
 const zero = document.getElementById('zero');
 
 one.addEventListener('click', () => {
-    display.innerText += 1;
+    if (!isClear) {
+        display.innerText = 1;
+        isClear = true;
+    } else {
+        display.innerText += 1;
+    }
 });
 two.addEventListener('click', () => {
-    display.innerText += 2;
+    if (!isClear) {
+        display.innerText = 2;
+        isClear = true;
+    } else {
+        display.innerText += 2;
+    }
 });
 three.addEventListener('click', () => {
-    display.innerText += 3;
+    if (!isClear) {
+        display.innerText = 3;
+        isClear = true;
+    } else {
+        display.innerText += 3;
+    }
 });
 four.addEventListener('click', () => {
-    display.innerText += 4;
+    if (!isClear) {
+        display.innerText = 4;
+        isClear = true;
+    } else {
+        display.innerText += 4;
+    }
 });
 five.addEventListener('click', () => {
-    display.innerText += 5;
+    if (!isClear) {
+        display.innerText = 5;
+        isClear = true;
+    } else {
+        display.innerText += 5;
+    }
 });
 six.addEventListener('click', () => {
-    display.innerText += 6;
+    if (!isClear) {
+        display.innerText = 6;
+        isClear = true;
+    } else {
+        display.innerText += 6;
+    }
 });
 seven.addEventListener('click', () => {
-    display.innerText += 7;
+    if (!isClear) {
+        display.innerText = 7;
+        isClear = true;
+    } else {
+        display.innerText += 7;
+    }
 });
 eight.addEventListener('click', () => {
-    display.innerText += 8;
+    if (!isClear) {
+        display.innerText = 8;
+        isClear = true;
+    } else {
+        display.innerText += 8;
+    }
 });
 nine.addEventListener('click', () => {
-    display.innerText += 9;
+    if (!isClear) {
+        display.innerText = 9;
+        isClear = true;
+    } else {
+        display.innerText += 9;
+    }
 });
 zero.addEventListener('click', () => {
-    display.innerText += 0;
+    if (!isClear) {
+        display.innerText = 0;
+        isClear = true;
+    } else {
+        display.innerText += 0;
+    }
+});
+
+const sumBtn = document.getElementById('sum');
+const subtractBtn = document.getElementById('subtract');
+const multiplyBtn = document.getElementById('multiply');
+const divideBtn = document.getElementById('divide');
+
+const equalBtn = document.getElementById('equals');
+const clearBtn = document.getElementById('clear');
+
+sumBtn.addEventListener('click', () => {
+    displayValue = display.innerText;
+    firstValue = +displayValue;
+    operator = '+';
+    isClear = false;
+});
+
+subtractBtn.addEventListener('click', () => {
+    displayValue = display.innerText;
+    firstValue = +displayValue;
+    operator = '-';
+    isClear = false;
+});
+
+multiplyBtn.addEventListener('click', () => {
+    displayValue = display.innerText;
+    firstValue = +displayValue;
+    operator = '*';
+    isClear = false;
+});
+
+divideBtn.addEventListener('click', () => {
+    displayValue = display.innerText;
+    firstValue = +displayValue;
+    operator = '/';
+    isClear = false;
+});
+
+equalBtn.addEventListener('click', () => {
+    displayValue = display.innerText;
+    secondValue = +displayValue;
+    displayValue = operate(operator, firstValue, secondValue);
+    display.innerText = displayValue;
+});
+
+clearBtn.addEventListener('click', () => {
+    display.innerText = 0;
+    isClear = false;
 });
