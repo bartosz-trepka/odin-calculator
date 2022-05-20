@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 200px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#display,
+#operations,
+#numbers {
+    border: 1px solid black;
+    width: 100%;
+}
+
+button {
+    width: 63px;
+    height: 63px;
+}
+
+#display {
+    font-size: 40px;
+    text-align: right;
+}
