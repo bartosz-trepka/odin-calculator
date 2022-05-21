@@ -143,6 +143,185 @@ point.addEventListener('click', () => {
     }
 });
 
+document.addEventListener('keydown', e => {
+    switch (e.key) {
+        case '1':
+            if (!isClear) {
+                display.innerText = 1;
+                isClear = true;
+            } else {
+                display.innerText += 1;
+            }
+            break;
+        case '2':
+            if (!isClear) {
+                display.innerText = 2;
+                isClear = true;
+            } else {
+                display.innerText += 2;
+            }
+            break;
+        case '3':
+            if (!isClear) {
+                display.innerText = 3;
+                isClear = true;
+            } else {
+                display.innerText += 3;
+            }
+            break;
+        case '4':
+            if (!isClear) {
+                display.innerText = 4;
+                isClear = true;
+            } else {
+                display.innerText += 4;
+            }
+            break;
+        case '5':
+            if (!isClear) {
+                display.innerText = 5;
+                isClear = true;
+            } else {
+                display.innerText += 5;
+            }
+            break;
+        case '6':
+            if (!isClear) {
+                display.innerText = 6;
+                isClear = true;
+            } else {
+                display.innerText += 6;
+            }
+            break;
+        case '7':
+            if (!isClear) {
+                display.innerText = 7;
+                isClear = true;
+            } else {
+                display.innerText += 7;
+            }
+            break;
+        case '8':
+            if (!isClear) {
+                display.innerText = 8;
+                isClear = true;
+            } else {
+                display.innerText += 8;
+            }
+            break;
+        case '9':
+            if (!isClear) {
+                display.innerText = 9;
+                isClear = true;
+            } else {
+                display.innerText += 9;
+            }
+            break;
+        case '0':
+            if (!isClear) {
+                display.innerText = 0;
+                isClear = true;
+            } else {
+                display.innerText += 0;
+            }
+            break;
+        case '.':
+            if (!isPoint) {
+                if (!isClear) {
+                    display.innerText = '0.';
+                    isClear = true;
+                    isPoint = true;
+                } else {
+                    display.innerText += '.';
+                    isPoint = true;
+                }
+            }
+            break;
+        case '+':
+            if (isChain) {
+                displayValue = display.innerText;
+                secondValue = +displayValue;
+                displayValue = operate(operator, firstValue, secondValue);
+                display.innerText = displayValue;
+            } else {
+                isChain = true;
+            }
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+            operator = '+';
+            isClear = false;
+            break;
+        case '-':
+            if (isChain) {
+                displayValue = display.innerText;
+                secondValue = +displayValue;
+                displayValue = operate(operator, firstValue, secondValue);
+                display.innerText = displayValue;
+            } else {
+                isChain = true;
+            }
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+            operator = '-';
+            isClear = false;
+            break;
+        case '*':
+            if (isChain) {
+                displayValue = display.innerText;
+                secondValue = +displayValue;
+                displayValue = operate(operator, firstValue, secondValue);
+                display.innerText = displayValue;
+            } else {
+                isChain = true;
+            }
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+            operator = '*';
+            isClear = false;
+            break;
+        case '/':
+            if (isChain) {
+                displayValue = display.innerText;
+                secondValue = +displayValue;
+                displayValue = operate(operator, firstValue, secondValue);
+                display.innerText = displayValue;
+        
+            } else {
+                isChain = true;
+            }
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+            operator = '/';
+            isClear = false;
+            break;
+        case '=':
+            if (operator !== "") {
+                displayValue = display.innerText;
+                secondValue = +displayValue;
+                displayValue = operate(operator, firstValue, secondValue);
+                display.innerText = displayValue;
+            }
+            break;
+        case 'Delete':
+            display.innerText = 0;
+            firstValue = 0;
+            secondValue = 0;
+            operator = '';
+            isClear = false;
+            isChain = false;
+            isPoint = false;
+            break;
+        case 'Backspace':
+            if (display.innerText.length !== 1) {
+                display.innerText = display.innerText.slice(0, -1);
+            } else {
+                display.innerText = 0;
+                isClear = false;
+            }
+            break;
+    }
+});
+
 const sumBtn = document.getElementById('sum');
 const subtractBtn = document.getElementById('subtract');
 const multiplyBtn = document.getElementById('multiply');
