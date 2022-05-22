@@ -32,12 +32,10 @@ function operate(operator, a, b) {
     }
 }
 
-let firstValue = 0, secondValue = 0, operator = '';
+let firstValue = 0, secondValue = 0, displayValue = 0, operator = '';
 let isClear = false, isChain = false, isPoint = false;
 
 const display = document.getElementById('display');
-let displayValue = 0;
-
 const one = document.getElementById('one');
 const two = document.getElementById('two');
 const three = document.getElementById('three');
@@ -49,88 +47,125 @@ const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
 const zero = document.getElementById('zero');
 const point = document.getElementById('point');
+const sumBtn = document.getElementById('sum');
+const subtractBtn = document.getElementById('subtract');
+const multiplyBtn = document.getElementById('multiply');
+const divideBtn = document.getElementById('divide');
+const equalBtn = document.getElementById('equals');
+const clearBtn = document.getElementById('clear');
+const backspaceBtn = document.getElementById('backspace');
 
-one.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 1;
-        isClear = true;
-    } else {
-        display.innerText += 1;
+function pressOne() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 1;
+            isClear = true;
+        } else {
+            display.innerText += 1;
+        }
     }
-});
-two.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 2;
-        isClear = true;
-    } else {
-        display.innerText += 2;
+}
+
+function pressTwo() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 2;
+            isClear = true;
+        } else {
+            display.innerText += 2;
+        }
     }
-});
-three.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 3;
-        isClear = true;
-    } else {
-        display.innerText += 3;
+}
+
+function pressThree() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 3;
+            isClear = true;
+        } else {
+            display.innerText += 3;
+        }
     }
-});
-four.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 4;
-        isClear = true;
-    } else {
-        display.innerText += 4;
+}
+
+function pressFour() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 4;
+            isClear = true;
+        } else {
+            display.innerText += 4;
+        }
     }
-});
-five.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 5;
-        isClear = true;
-    } else {
-        display.innerText += 5;
+}
+
+function pressFive() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 5;
+            isClear = true;
+        } else {
+            display.innerText += 5;
+        }
     }
-});
-six.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 6;
-        isClear = true;
-    } else {
-        display.innerText += 6;
+}
+
+function pressSix() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 6;
+            isClear = true;
+        } else {
+            display.innerText += 6;
+        }
     }
-});
-seven.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 7;
-        isClear = true;
-    } else {
-        display.innerText += 7;
+}
+
+function pressSeven() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 7;
+            isClear = true;
+        } else {
+            display.innerText += 7;
+        }
     }
-});
-eight.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 8;
-        isClear = true;
-    } else {
-        display.innerText += 8;
+}
+
+function pressEight() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 8;
+            isClear = true;
+        } else {
+            display.innerText += 8;
+        }
     }
-});
-nine.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 9;
-        isClear = true;
-    } else {
-        display.innerText += 9;
+}
+
+function pressNine() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 9;
+            isClear = true;
+        } else {
+            display.innerText += 9;
+        }
     }
-});
-zero.addEventListener('click', () => {
-    if (!isClear) {
-        display.innerText = 0;
-        isClear = true;
-    } else {
-        display.innerText += 0;
+}
+
+function pressZero() {
+    if (display.innerText.length < 8) {
+        if (!isClear) {
+            display.innerText = 0;
+            isClear = true;
+        } else {
+            display.innerText += 0;
+        }
     }
-});
-point.addEventListener('click', () => {
+}
+
+function pressPoint() {
     if (!isPoint) {
         if (!isClear) {
             display.innerText = '0.';
@@ -141,197 +176,9 @@ point.addEventListener('click', () => {
             isPoint = true;
         }
     }
-});
+}
 
-document.addEventListener('keydown', e => {
-    switch (e.key) {
-        case '1':
-            if (!isClear) {
-                display.innerText = 1;
-                isClear = true;
-            } else {
-                display.innerText += 1;
-            }
-            break;
-        case '2':
-            if (!isClear) {
-                display.innerText = 2;
-                isClear = true;
-            } else {
-                display.innerText += 2;
-            }
-            break;
-        case '3':
-            if (!isClear) {
-                display.innerText = 3;
-                isClear = true;
-            } else {
-                display.innerText += 3;
-            }
-            break;
-        case '4':
-            if (!isClear) {
-                display.innerText = 4;
-                isClear = true;
-            } else {
-                display.innerText += 4;
-            }
-            break;
-        case '5':
-            if (!isClear) {
-                display.innerText = 5;
-                isClear = true;
-            } else {
-                display.innerText += 5;
-            }
-            break;
-        case '6':
-            if (!isClear) {
-                display.innerText = 6;
-                isClear = true;
-            } else {
-                display.innerText += 6;
-            }
-            break;
-        case '7':
-            if (!isClear) {
-                display.innerText = 7;
-                isClear = true;
-            } else {
-                display.innerText += 7;
-            }
-            break;
-        case '8':
-            if (!isClear) {
-                display.innerText = 8;
-                isClear = true;
-            } else {
-                display.innerText += 8;
-            }
-            break;
-        case '9':
-            if (!isClear) {
-                display.innerText = 9;
-                isClear = true;
-            } else {
-                display.innerText += 9;
-            }
-            break;
-        case '0':
-            if (!isClear) {
-                display.innerText = 0;
-                isClear = true;
-            } else {
-                display.innerText += 0;
-            }
-            break;
-        case '.':
-            if (!isPoint) {
-                if (!isClear) {
-                    display.innerText = '0.';
-                    isClear = true;
-                    isPoint = true;
-                } else {
-                    display.innerText += '.';
-                    isPoint = true;
-                }
-            }
-            break;
-        case '+':
-            if (isChain) {
-                displayValue = display.innerText;
-                secondValue = +displayValue;
-                displayValue = operate(operator, firstValue, secondValue);
-                display.innerText = displayValue;
-            } else {
-                isChain = true;
-            }
-            displayValue = display.innerText;
-            firstValue = +displayValue;
-            operator = '+';
-            isClear = false;
-            break;
-        case '-':
-            if (isChain) {
-                displayValue = display.innerText;
-                secondValue = +displayValue;
-                displayValue = operate(operator, firstValue, secondValue);
-                display.innerText = displayValue;
-            } else {
-                isChain = true;
-            }
-            displayValue = display.innerText;
-            firstValue = +displayValue;
-            operator = '-';
-            isClear = false;
-            break;
-        case '*':
-            if (isChain) {
-                displayValue = display.innerText;
-                secondValue = +displayValue;
-                displayValue = operate(operator, firstValue, secondValue);
-                display.innerText = displayValue;
-            } else {
-                isChain = true;
-            }
-            displayValue = display.innerText;
-            firstValue = +displayValue;
-            operator = '*';
-            isClear = false;
-            break;
-        case '/':
-            if (isChain) {
-                displayValue = display.innerText;
-                secondValue = +displayValue;
-                displayValue = operate(operator, firstValue, secondValue);
-                display.innerText = displayValue;
-        
-            } else {
-                isChain = true;
-            }
-            displayValue = display.innerText;
-            firstValue = +displayValue;
-            operator = '/';
-            isClear = false;
-            break;
-        case '=':
-            if (operator !== "") {
-                displayValue = display.innerText;
-                secondValue = +displayValue;
-                displayValue = operate(operator, firstValue, secondValue);
-                display.innerText = displayValue;
-            }
-            break;
-        case 'Delete':
-            display.innerText = 0;
-            firstValue = 0;
-            secondValue = 0;
-            operator = '';
-            isClear = false;
-            isChain = false;
-            isPoint = false;
-            break;
-        case 'Backspace':
-            if (display.innerText.length !== 1) {
-                display.innerText = display.innerText.slice(0, -1);
-            } else {
-                display.innerText = 0;
-                isClear = false;
-            }
-            break;
-    }
-});
-
-const sumBtn = document.getElementById('sum');
-const subtractBtn = document.getElementById('subtract');
-const multiplyBtn = document.getElementById('multiply');
-const divideBtn = document.getElementById('divide');
-
-const equalBtn = document.getElementById('equals');
-const clearBtn = document.getElementById('clear');
-const backspaceBtn = document.getElementById('backspace');
-
-sumBtn.addEventListener('click', () => {
+function pressSum() {
     if (isChain) {
         displayValue = display.innerText;
         secondValue = +displayValue;
@@ -344,9 +191,9 @@ sumBtn.addEventListener('click', () => {
     firstValue = +displayValue;
     operator = '+';
     isClear = false;
-});
+}
 
-subtractBtn.addEventListener('click', () => {
+function pressSubtract() {
     if (isChain) {
         displayValue = display.innerText;
         secondValue = +displayValue;
@@ -359,9 +206,9 @@ subtractBtn.addEventListener('click', () => {
     firstValue = +displayValue;
     operator = '-';
     isClear = false;
-});
+}
 
-multiplyBtn.addEventListener('click', () => {
+function pressMultiply() {
     if (isChain) {
         displayValue = display.innerText;
         secondValue = +displayValue;
@@ -374,9 +221,9 @@ multiplyBtn.addEventListener('click', () => {
     firstValue = +displayValue;
     operator = '*';
     isClear = false;
-});
+}
 
-divideBtn.addEventListener('click', () => {
+function pressDivide() {
     if (isChain) {
         displayValue = display.innerText;
         secondValue = +displayValue;
@@ -390,18 +237,18 @@ divideBtn.addEventListener('click', () => {
     firstValue = +displayValue;
     operator = '/';
     isClear = false;
-});
+}
 
-equalBtn.addEventListener('click', () => {
+function pressEquals() {
     if (operator !== "") {
         displayValue = display.innerText;
         secondValue = +displayValue;
         displayValue = operate(operator, firstValue, secondValue);
         display.innerText = displayValue;
     }
-}); 
+}
 
-clearBtn.addEventListener('click', () => {
+function pressClear() {
     display.innerText = 0;
     firstValue = 0;
     secondValue = 0;
@@ -409,13 +256,97 @@ clearBtn.addEventListener('click', () => {
     isClear = false;
     isChain = false;
     isPoint = false;
-});
+}
 
-backspaceBtn.addEventListener('click', () => {
+function pressBackspace() {
     if (display.innerText.length !== 1) {
         display.innerText = display.innerText.slice(0, -1);
     } else {
         display.innerText = 0;
         isClear = false;
+    }
+}
+
+one.addEventListener('click', pressOne);
+two.addEventListener('click', pressTwo);
+three.addEventListener('click', pressThree);
+four.addEventListener('click', pressFour);
+five.addEventListener('click', pressFive);
+six.addEventListener('click', pressSix);
+seven.addEventListener('click', pressSeven);
+eight.addEventListener('click', pressEight);
+nine.addEventListener('click', pressNine);
+zero.addEventListener('click', pressZero);
+point.addEventListener('click', pressPoint);
+sumBtn.addEventListener('click', pressSum);
+subtractBtn.addEventListener('click', pressSubtract);
+multiplyBtn.addEventListener('click', pressMultiply);
+divideBtn.addEventListener('click', pressDivide);
+equalBtn.addEventListener('click', pressEquals); 
+clearBtn.addEventListener('click', pressClear);
+backspaceBtn.addEventListener('click', pressBackspace);
+
+document.addEventListener('keydown', e => {
+    switch (e.key) {
+        case '1':
+            pressOne();
+            break;
+        case '2':
+            pressTwo();
+            break;
+        case '3':
+            pressThree();
+            break;
+        case '4':
+            pressFour();
+            break;
+        case '5':
+            pressFive();
+            break;
+        case '6':
+            pressSix();
+            break;
+        case '7':
+            pressSeven();
+            break;
+        case '8':
+            pressEight();
+            break;
+        case '9':
+            pressNine();
+            break;
+        case '0':
+            pressZero();
+            break;
+        case '.':
+            pressPoint();
+            break;
+        case ',':
+            pressPoint();
+            break;
+        case '+':
+            pressSum();
+            break;
+        case '-':
+            pressSubtract();
+            break;
+        case '*':
+            pressMultiply();
+            break;
+        case '/':
+            pressDivide();
+            break;
+        case '=':
+            pressEquals();
+            break;
+        case 'Enter':
+            pressEquals();
+            break;
+        case 'Delete':
+            pressClear();
+            break;
+        case 'Backspace':
+            pressBackspace();
+            break;
     }
 });
