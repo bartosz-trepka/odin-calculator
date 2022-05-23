@@ -190,6 +190,7 @@ function pressSum() {
         }
         displayValue = display.innerText;
         firstValue = +displayValue;
+        secondValue = firstValue;
         operator = '+';
         isClear = false;
     }
@@ -204,6 +205,7 @@ function pressSubtract() {
         }
         displayValue = display.innerText;
         firstValue = +displayValue;
+        secondValue = firstValue;
         operator = '-';
         isClear = false;
     }
@@ -218,6 +220,7 @@ function pressMultiply() {
         }
         displayValue = display.innerText;
         firstValue = +displayValue;
+        secondValue = firstValue;
         operator = '*';
         isClear = false;
     }
@@ -232,6 +235,7 @@ function pressDivide() {
         }
         displayValue = display.innerText;
         firstValue = +displayValue;
+        secondValue = firstValue;
         operator = '/';
         isClear = false;
     }
@@ -259,6 +263,7 @@ function pressClear() {
     display.innerText = 0;
     firstValue = 0;
     secondValue = 0;
+    displayValue = 0;
     operator = '';
     isClear = false;
     isChain = false;
@@ -269,6 +274,9 @@ function pressClear() {
 function pressBackspace() {
     if (!isError) {
         if (display.innerText.length !== 1) {
+            if (display.innerText[display.innerText.length - 1] === '.') {
+                isPoint = false;
+            }
             display.innerText = display.innerText.slice(0, -1);
         } else {
             pressClear();
