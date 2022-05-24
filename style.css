@@ -58,6 +58,15 @@ button {
     color: #c1c1c1;
 }
 
+button:hover:not(.active) {
+    background-color: #2a2a2a;
+}
+
+.active {
+    background-color: #50fb97;
+    color: #1e1e1e !important;
+}
+
 .number {
     color: #fb3c4c
 }

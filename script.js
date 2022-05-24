@@ -227,6 +227,7 @@ function pressSum() {
         }
         isAction = true;
         operator = '+';
+        toggleActiveButton(sumBtn);
         if (!firstValue) {
             displayValue = display.innerText;
             firstValue = +displayValue;
@@ -255,6 +256,7 @@ function pressSubtract() {
         }
         isAction = true;
         operator = '-';
+        toggleActiveButton(subtractBtn);
         if (!firstValue) {
             displayValue = display.innerText;
             firstValue = +displayValue;
@@ -283,6 +285,7 @@ function pressMultiply() {
         }
         isAction = true;
         operator = '*';
+        toggleActiveButton(multiplyBtn);
         if (!firstValue) {
             displayValue = display.innerText;
             firstValue = +displayValue;
@@ -311,6 +314,7 @@ function pressDivide() {
         }
         isAction = true;
         operator = '/';
+        toggleActiveButton(multiplyBtn);
         if (!firstValue) {
             displayValue = display.innerText;
             firstValue = +displayValue;
@@ -332,6 +336,7 @@ function pressEquals() {
             firstValue = +displayValue
             display.innerText = displayValue;
             isAction = true;
+            toggleActiveButton(equalBtn);
         }
     }
     if (operator === '/') {
@@ -348,6 +353,7 @@ function pressEquals() {
 
 function pressClear() {
     setInitialValues();
+    toggleActiveButton('noarg');
 }
 
 function pressBackspace() {
@@ -360,6 +366,27 @@ function pressBackspace() {
         } else {
             pressClear();
         }
+    }
+}
+
+function toggleActiveButton(button) {
+    if (sumBtn.classList.contains('active')) {
+        sumBtn.classList.toggle('active');
+    }
+    if (subtractBtn.classList.contains('active')) {
+        subtractBtn.classList.toggle('active');
+    }
+    if (multiplyBtn.classList.contains('active')) {
+        multiplyBtn.classList.toggle('active');
+    }
+    if (divideBtn.classList.contains('active')) {
+        divideBtn.classList.toggle('active');
+    }
+    if (equalBtn.classList.contains('active')) {
+        equalBtn.classList.toggle('active');
+    }
+    if (button !== 'noarg') {
+        button.classList.toggle('active');
     }
 }
 
