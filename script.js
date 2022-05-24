@@ -314,7 +314,7 @@ function pressDivide() {
         }
         isAction = true;
         operator = '/';
-        toggleActiveButton(multiplyBtn);
+        toggleActiveButton(divideBtn);
         if (!firstValue) {
             displayValue = display.innerText;
             firstValue = +displayValue;
