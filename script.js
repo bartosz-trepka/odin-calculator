@@ -14,7 +14,6 @@ function divide(a, b) {
     if (b!== 0) {
         return a / b;
     } else {
-        isClear = false;
         isError = true;
         return 'ERROR';
     }
@@ -33,8 +32,8 @@ function operate(operator, a, b) {
     }
 }
 
-let firstValue = 0, secondValue = 0, displayValue = 0, operator = '';
-let isClear = false, isChain = false, isPoint = false, isError = false;
+let firstValue, secondValue, constValue, displayValue, operator;
+let isAction, isResult, isPoint, isError;
 
 const display = document.getElementById('display');
 const one = document.getElementById('one');
@@ -56,11 +55,22 @@ const equalBtn = document.getElementById('equals');
 const clearBtn = document.getElementById('clear');
 const backspaceBtn = document.getElementById('backspace');
 
+setInitialValues();
+
+function setInitialValues() {
+    firstValue = null, secondValue = null, constValue = null, displayValue = null;
+    operator = '';
+    display.innerText = '0';
+    isAction = true, isResult = true, isPoint = false, isError = false;
+}
+
 function pressOne() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 1;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 1;
         }
@@ -69,9 +79,11 @@ function pressOne() {
 
 function pressTwo() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 2;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 2;
         }
@@ -80,9 +92,11 @@ function pressTwo() {
 
 function pressThree() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 3;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 3;
         }
@@ -91,9 +105,11 @@ function pressThree() {
 
 function pressFour() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 4;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 4;
         }
@@ -102,9 +118,11 @@ function pressFour() {
 
 function pressFive() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 5;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 5;
         }
@@ -113,9 +131,11 @@ function pressFive() {
 
 function pressSix() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 6;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 6;
         }
@@ -124,9 +144,11 @@ function pressSix() {
 
 function pressSeven() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 7;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 7;
         }
@@ -135,9 +157,11 @@ function pressSeven() {
 
 function pressEight() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 8;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 8;
         }
@@ -146,9 +170,11 @@ function pressEight() {
 
 function pressNine() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 9;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 9;
         }
@@ -157,9 +183,11 @@ function pressNine() {
 
 function pressZero() {
     if (!isError) {
-        if (!isClear) {
+        if (isAction || display.innerText === '0') {
             display.innerText = 0;
-            isClear = true;
+            isAction = false;
+            isResult = false;
+            constValue = null;
         } else if (display.innerText.length < 8) {
             display.innerText += 0;
         }
@@ -169,11 +197,12 @@ function pressZero() {
 function pressPoint() {
     if (!isError) {
         if (!isPoint) {
-            if (!isClear) {
+            if (isAction) {
                 display.innerText = '0.';
-                isClear = true;
+                isAction = false;
+                isResult = false;
                 isPoint = true;
-            } else {
+            } else if (display.innerText.length < 8) {
                 display.innerText += '.';
                 isPoint = true;
             }
@@ -183,92 +212,142 @@ function pressPoint() {
 
 function pressSum() {
     if (!isError) {
-        if (isChain) {
-            pressEquals();
-        } else {
-            isChain = true;
+        if (operator !== '') {
+            if (!isResult && !isAction) {
+                displayValue = display.innerText;
+                if (!secondValue) {
+                    secondValue = +displayValue;
+                    displayValue = operate(operator, firstValue, secondValue);
+                    display.innerText = +displayValue;
+                    firstValue = +displayValue;
+                    secondValue = null;
+                }
+                isResult = true;
+            }
         }
-        displayValue = display.innerText;
-        firstValue = +displayValue;
-        secondValue = firstValue;
+        isAction = true;
         operator = '+';
-        isClear = false;
+        if (!firstValue) {
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+        } 
+    }
+    if (display.innerText.length >= 9) {
+        display.innerText = 'ERROR';
+        isError = true;
     }
 }
 
 function pressSubtract() {
     if (!isError) {
-        if (isChain) {
-            pressEquals();
-        } else {
-            isChain = true;
+        if (operator !== '') {
+            if (!isResult && !isAction) {
+                displayValue = display.innerText;
+                if (!secondValue) {
+                    secondValue = +displayValue;
+                    displayValue = operate(operator, firstValue, secondValue);
+                    display.innerText = +displayValue;
+                    firstValue = +displayValue;
+                    secondValue = null;
+                }
+                isResult = true;
+            }
         }
-        displayValue = display.innerText;
-        firstValue = +displayValue;
-        secondValue = firstValue;
+        isAction = true;
         operator = '-';
-        isClear = false;
+        if (!firstValue) {
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+        } 
+    }
+    if (display.innerText.length >= 9) {
+        display.innerText = 'ERROR';
+        isError = true;
     }
 }
 
 function pressMultiply() {
     if (!isError) {
-        if (isChain) {
-            pressEquals();
-        } else {
-            isChain = true;
+        if (operator !== '') {
+            if (!isResult && !isAction) {
+                displayValue = display.innerText;
+                if (!secondValue) {
+                    secondValue = +displayValue;
+                    displayValue = operate(operator, firstValue, secondValue);
+                    display.innerText = +displayValue;
+                    firstValue = +displayValue;
+                    secondValue = null;
+                }
+                isResult = true;
+            }
         }
-        displayValue = display.innerText;
-        firstValue = +displayValue;
-        secondValue = firstValue;
+        isAction = true;
         operator = '*';
-        isClear = false;
+        if (!firstValue) {
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+        } 
+    }
+    if (display.innerText.length >= 9) {
+        display.innerText = 'ERROR';
+        isError = true;
     }
 }
 
 function pressDivide() {
     if (!isError) {
-        if (isChain) {
-            pressEquals();
-        } else {
-            isChain = true;
+        if (operator !== '') {
+            if (!isResult && !isAction) {
+                displayValue = display.innerText;
+                if (!secondValue) {
+                    secondValue = +displayValue;
+                    displayValue = operate(operator, firstValue, secondValue);
+                    display.innerText = +displayValue;
+                    firstValue = +displayValue;
+                    secondValue = null;
+                }
+                isResult = true;
+            }
         }
-        displayValue = display.innerText;
-        firstValue = +displayValue;
-        secondValue = firstValue;
+        isAction = true;
         operator = '/';
-        isClear = false;
+        if (!firstValue) {
+            displayValue = display.innerText;
+            firstValue = +displayValue;
+        } 
+    }
+    while (display.innerText.length >= 9) {
+       display.innerText = display.innerText.slice(0, -1); 
     }
 }
 
 function pressEquals() {
     if (!isError) {
-        if (operator !== "") {
-            displayValue = display.innerText;
-            secondValue = +displayValue;
-            displayValue = operate(operator, firstValue, secondValue);
+        if (operator !== '' && firstValue) {
+            if (!constValue) {
+                displayValue = display.innerText;
+                constValue = +displayValue;
+            }
+            displayValue = operate(operator, firstValue, constValue);
+            firstValue = +displayValue
             display.innerText = displayValue;
-            while (display.innerText.length > 9) {
-                display.innerText = display.innerText.slice(0, -1);
-            }
-            if (display.innerText.length === 9) {
-                display.innerText = 'ERROR';
-                isError = true;
-            }
+            isAction = true;
+        }
+    }
+    if (operator === '/') {
+        while (display.innerText.length >= 9) {
+            display.innerText = display.innerText.slice(0, -1); 
+         }
+    } else {
+        if (display.innerText.length >= 9) {
+            display.innerText = 'ERROR';
+            isError = true;
         }
     }
 }
 
 function pressClear() {
-    display.innerText = 0;
-    firstValue = 0;
-    secondValue = 0;
-    displayValue = 0;
-    operator = '';
-    isClear = false;
-    isChain = false;
-    isPoint = false;
-    isError = false;
+    setInitialValues();
 }
 
 function pressBackspace() {
